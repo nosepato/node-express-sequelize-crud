@@ -18,7 +18,7 @@ const db = require("./app/models");
 db.sequelize.sync()
     .then(() => {
         console.log("Banco conectado!");
-    });
+    })
     .catch((err) => {
         console.log("Falha ao acessar banco de dados: " + err.message);
     });
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
     res.json({message: 'Hello World!'})
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8088;
 
 //vigia/escuta tudo que acontecer na PORT
 app.listen(PORT, () => {
