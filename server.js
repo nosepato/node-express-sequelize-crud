@@ -23,6 +23,8 @@ db.sequelize.sync()
         console.log("Falha ao acessar banco de dados: " + err.message);
     });
 
+require("./app/routes/item.routes")(app);    
+
 app.get("/", (req, res) => {
     res.json({message: 'Hello World!'})
 });

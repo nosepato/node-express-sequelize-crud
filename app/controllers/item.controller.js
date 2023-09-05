@@ -1,6 +1,6 @@
 const db = require("../models");
 const Item = db.item;
-const Op = db.Sequelie.Op;
+const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     if (!req.body.name) {
@@ -31,8 +31,10 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    const name = req.body.name;
-    var condition = name ? { name: { [Op.like]: `%${name}%`} } :null;
+    const name = req.query.name;
+    var condition = name ? { name: { [Op.iLike]: `%${name}%`} } :null;
+
+    console.log(req);
 
     Item.findAll({where: condition})
     .then(data => {
@@ -130,7 +132,7 @@ exports.deleteAll = (req, res) => {
         });
 };
 
-exports.findAllFlammabes = (req, res) => {
+exports.findAllFlammables = (req, res) => {
     Item.findAll({ where: { isFlammable: true } })
     .then(data => {
         res.send(data);
