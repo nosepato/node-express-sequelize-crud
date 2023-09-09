@@ -1,5 +1,5 @@
 const db = require("../models");
-const Item = db.item;
+const Item = db.items;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         name: req.body.name,
         description: req.body.description,
         quantity: req.body.quantity,
-        is_flammable: req.bady.is_flammable ? req.body.is_flammable: false
+        is_flammable: req.body.is_flammable ? req.body.is_flammable: false
     }
 
     Item.create(item)
